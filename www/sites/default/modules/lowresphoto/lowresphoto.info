@@ -1,0 +1,4 @@
+name = LowResPhoto
+description = Customization.
+core = 6.x
+package = lpr

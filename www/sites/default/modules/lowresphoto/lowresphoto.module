@@ -1,0 +1,100 @@
+<?php
+
+function lowresphoto_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'user_login_block') {
+		$form['name']['#title']='';
+		$form['pass']['#title']='';
+	}
+
+}
+
+
+function lowresphoto_block($op = 'list', $delta = 0, $edit = array()) {
+  if ($op == 'list') {
+    $blocks['dashboard_bar'] = array('info' => t('Dashboard Bar'),
+      'cache' => BLOCK_CACHE_PER_ROLE | BLOCK_CACHE_PER_PAGE);
+
+    return $blocks;
+  }
+
+  else if ($op == 'view') {
+    switch($delta) {
+      case 'dashboard_bar':
+        $block = array('subject' => t(''),
+          'content' => lowresphoto_dashboard_block());
+        break;
+    }
+    return $block;
+  }
+}
+
+
+function lowresphoto_dashboard_block(){
+	global $user;
+	
+	if(strlen($user->picture)<=0){
+		$img_path = variable_get('user_picture_default', '');
+	}else{
+		$img_path = base_path().$user->picture;		
+	}
+	$usr_img =  theme('imagecache', '35x35', $img_path, $user->name, $user->name); 
+	
+	
+	$form = array();
+
+	$form['username']=array(
+		'#value' => l($user->name,'user/'),
+		'#prefix' => '<div>',
+		'#suffix' => '</div>',
+	);
+	
+	
+	$form['avatar']=array(
+		'#value' => $usr_img,
+		'#prefix' => '<div>',
+		'#suffix' => '</div>',
+	);
+	
+	$form['logout']=array(
+		'#value' => l('X','logout'),
+		'#prefix' => '<div class="logout-button">',
+		'#suffix' => '</div>',
+	);
+	return drupal_render($form);
+}
+
+
+function _p($data, $type = 'message', $format = 'print_r', $plain = TRUE) {
+  // Permissions check.
+  $exceptions = array('all', 'watchdog');
+
+  // Formatting output.
+  switch ($format) {
+    default:
+      $output = $format($data, TRUE);
+      if ($plain) {
+        $output = check_plain($output);
+      }
+      $output = '<pre>'. $output .'</pre>';
+      break;
+  }
+
+  // Output style.
+  if ($type) {
+    switch ($type) {
+      case 'print':
+        print $output;
+        break;
+      case 'watchdog':
+        watchdog('pff', $output, WATCHDOG_WARNING);
+        break;
+      default:
+        drupal_set_message($output);
+        break;
+    }
+  } else {
+    return $output;
+  }
+}
+
+
