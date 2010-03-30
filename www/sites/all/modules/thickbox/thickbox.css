@@ -7,23 +7,23 @@
 
 #TB_secondLine {
   font: 10px "Lucida Grande", Verdana, Arial, sans-serif;
-  color: #000;
+  color: #ccc;
 }
 
 #TB_window a:link {
-  color: #000;
+  color: #ccc;
 }
 #TB_window a:visited {
-  color: #000;
+  color: #ccc;
 }
 #TB_window a:hover {
-  color: #000;
+  color: #ccc;
 }
 #TB_window a:active {
-  color: #000;
+  color: #ccc;
 }
 #TB_window a:focus {
-  color: #000;
+  color: #ccc;
 }
 
 #TB_overlay {
@@ -40,28 +40,29 @@
 }
 .TB_overlayBG {
   background-color: #000;
-  -moz-opacity: 0.75;
-  opacity: 0.75;
+  -moz-opacity: 0.85;
+  opacity: 0.85;
 }
 
 #TB_window {
   position: fixed;
-  background: #050505;
+/*  background: #050505;*/
   z-index: 102;
   color: #000;
   display: none;
 
-  border: 1px solid #121212;
+/*  border: 1px solid #121212;*/
 
   text-align: left;
   top: 50%;
   left: 50%;
+
 }
 
 #TB_window img#TB_Image {
   display: block;
-  margin: 15px 0 0 15px;
-
+  margin: 0px 0 0 0px;
+	border: 1px solid #aaaaaa;
 /*
   border: 1px solid #c00;
   border-right: 1px solid #ccc;
@@ -72,16 +73,16 @@
 }
 
 #TB_caption {
-	  color: #fff;
+	color: #aaaaaa;
 	font-size:2em;
   height: 25px;
-  padding: 7px 30px 10px 25px;
+  padding: 0px 0px 0px 0px;
   float: left;
 }
 
 #TB_closeWindow {
   height: 25px;
-  padding: 11px 25px 10px 0;
+  padding: 0px 0px 0px 0;
   float: right;
 }
 

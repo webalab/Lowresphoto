@@ -31,7 +31,7 @@
 /** body **/
   body
   {
-		background:#121212;
+		background:#090909;
 		color:#333;
     margin: 0;
     padding: 10px;
@@ -690,6 +690,7 @@
 
   .form-item label /* The label for a form element */
   {
+	color:#ccc;
     display: block;
     font-weight: bold;
   }
@@ -707,6 +708,7 @@
 
   .form-item .description /* The descriptive help text (separate from the label) */
   {
+	color:#aaa;
     font-size: 0.85em;
   }
 
@@ -864,7 +866,7 @@ clear:both;
 	padding:10px;
 }
 .view-photo .views-field-field-image-fid img{
-		border:5px solid #000;
+		border:1px solid #393939;
 }
 
 #block-lowresphoto-dashboard_bar{
